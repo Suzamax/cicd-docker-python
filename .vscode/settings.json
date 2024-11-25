@@ -1,3 +1,6 @@
 {
-    "python.analysis.autoImportCompletions": true
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.extraPaths": [
+        "/workspaces/cicd/.venv/lib/python3.12/site-packages"
+    ]
 }
