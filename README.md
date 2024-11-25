@@ -1,6 +1,6 @@
 # CI/CD pipelines using Python containers
  
-## Preparation
+## Preparation on host
 
 Create a virtual env with
 ```bash
@@ -12,4 +12,17 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## TODO
+Run this.
+
+```bash
+echo "export PROJECT_ENV=${PWD}" >> .env
+```
+
+## Run on container
+
+Run:
+
+```bash
+source .env
+./run.sh
+```

@@ -6,6 +6,7 @@ RUN apk add --update --no-cache \
     yq \
     docker-compose \
     docker-cli \
+    docker-cli-buildx \
     git \
     wget \
     curl \
