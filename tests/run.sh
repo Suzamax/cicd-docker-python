@@ -8,6 +8,6 @@ docker run \
     -e PHASE=integration \
     -e STAGE=build \
     -e TAG=test_container \
-    -v $PROJECT_DIR/tests:/build \
+    -v $PROJECT_DIR:/build \
     -v /var/run/docker.sock:/var/run/docker.sock \
     lifecycle_lib:latest
