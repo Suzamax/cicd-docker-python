@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-PROJECT_DIR=/mnt/c/Users/ratio/Proyectos/nekops
+PROJECT_DIR=/mnt/c/Users/ratio/Proyectos/cicd
 
 docker build .. -t lifecycle_lib:latest
 docker run \
