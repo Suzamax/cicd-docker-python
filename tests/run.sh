@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-PROJECT_DIR=/mnt/c/Users/ratio/Proyectos/cicd
+PROJECT_DIR=/HOST/path/is/there
 
 docker build .. -t lifecycle_lib:latest
 docker run \
@@ -8,6 +8,6 @@ docker run \
     -e PHASE=integration \
     -e STAGE=build \
     -e TAG=test_container \
-    --mount type=bind,source=$PROJECT_DIR/tests,target=/build,readonly \
+    -v $PROJECT_DIR/tests:/build \
     -v /var/run/docker.sock:/var/run/docker.sock \
     lifecycle_lib:latest

@@ -1,4 +1,4 @@
-from lib.docker import DockerLib
+from library.docker import DockerLib
 import click
 
 @click.command()

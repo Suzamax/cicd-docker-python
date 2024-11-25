@@ -7,8 +7,8 @@
         "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind,consistency=cached"
     ],
     "remoteEnv": {
-		"LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
-	},
+        "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
+    },
     "customizations": {
         "vscode": {
             "extensions": [
