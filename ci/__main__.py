@@ -14,7 +14,7 @@ def integration():
 def ci(stage, tag):
     match stage:
         case "build":
-            DockerLib().build(tag)
+            DockerLib("INFO").build(tag)
         case "prune":
             DockerLib().prune()
 
