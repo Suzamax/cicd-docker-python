@@ -15,7 +15,7 @@ pip install -r requirements.txt
 Run this.
 
 ```bash
-echo "export PROJECT_ENV=${PWD}" >> .env
+echo "export PROJECT_DIR=${PWD}" >> .env
 ```
 
 ## Run on container
