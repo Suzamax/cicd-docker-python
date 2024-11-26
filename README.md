@@ -24,5 +24,14 @@ Run:
 
 ```bash
 source .env
+```
+Bootstrap it with
+```bash
+docker build . -t test_container:latest
+```
+Subsequent versions should be run with:
+```bash
 ./run.sh
 ```
+
+Or its content, obviously.
