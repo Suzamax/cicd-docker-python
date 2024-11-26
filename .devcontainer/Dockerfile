@@ -2,7 +2,9 @@ FROM alpine:3.20
 
 RUN apk add --update --no-cache \
     python3 \
+    py3-pip \
     kubectl \
+    helm \
     yq \
     docker-compose \
     docker-cli \
