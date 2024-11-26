@@ -6,7 +6,7 @@ FORMAT = "%(message)s"
 
 
 class DockerLib:
-    def __init__(self, logLevel) -> None:
+    def __init__(self, loglevel) -> None:
         self.client = docker.client.from_env()
         logging.basicConfig(
             level=loglevel, format=FORMAT, datefmt="[%X]", handlers=[RichHandler()]
