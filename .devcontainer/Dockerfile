@@ -13,3 +13,6 @@ RUN apk add --update --no-cache \
     wget \
     curl \
     bash
+
+RUN curl -L -k -g -o /usr/local/bin/jf "https://releases.jfrog.io/artifactory/jfrog-cli/v2-jf/%5BRELEASE%5D/jfrog-cli-linux-amd64/jf" \
+    && chmod +x /usr/local/bin/jf
