@@ -1,3 +1,4 @@
+import os
 import docker
 import logging
 from rich.logging import RichHandler
@@ -17,7 +18,7 @@ class DockerLib:
         self.self.log.info("Starting container build...")
         problems = []
         try:
-            image, logs = self.client.images.build(path="/build", tag=tag, timeout=900)
+            image, logs = self.client.images.build(path=os.environ['DOCKERFILE_PATH'], tag=tag, timeout=900)
             if image:
                 for chunk in logs:
                     if 'stream' in chunk:

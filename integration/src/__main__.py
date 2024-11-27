@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-from library.docker import DockerLib
 import click
+from library.docker import DockerLib
 
 @click.group()
 def integration():
