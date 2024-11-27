@@ -6,7 +6,7 @@ class K8sLib:
         """
         Creates a Kubernetes Library instance
 
-        :param str f_config: The path to the kubeconfig.
+        :param string f_config: The path to the kubeconfig.
         """
         kubernetes.config.load_kube_config(config_file=f_config)
         self.k8s_client = kubernetes.client.ApiClient()
@@ -14,6 +14,8 @@ class K8sLib:
     def apply(self, yaml_path):
         """
         Applies a file
+        
+        :param string yaml_path: The path to the YAML file to load.
         """
         kubernetes.utils.create_from_yaml(k8s_client=self.k8s_client, yaml_file=yaml_path)
 
