@@ -9,7 +9,7 @@ RUN apk add --no-cache --update \
     openssl \
     openssh
 
-WORKDIR /app
+WORKDIR /workdir
 COPY ./requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt
 COPY src/ /app

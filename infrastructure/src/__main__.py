@@ -2,13 +2,19 @@
 
 import click
 
+from library.opentofu import OpentofuLib
+
+
 @click.group()
 def infrastructure():
     pass
 
 @infrastructure.command()
-def tofu():
-    pass
+@click.argument('arg', type=click.STRING)
+def terraform(arg):
+    match arg:
+        case 'plan':
+            OpentofuLib.opentofu_plan()
 
 @infrastructure.command()
 def ansible():
