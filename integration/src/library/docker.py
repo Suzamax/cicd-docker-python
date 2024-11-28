@@ -1,6 +1,7 @@
 import os
 import docker
 import logging
+import docker.errors
 from rich.logging import RichHandler
 
 FORMAT = "%(message)s"
@@ -15,8 +16,7 @@ class DockerLib:
         self.log = logging.getLogger("rich")
 
     def build(self, tag):
-        self.self.log.info("Starting container build...")
-        problems = []
+        self.self.log.info("Building {tag} container...")
         try:
             image, logs = self.client.images.build(path=os.environ['DOCKERFILE_PATH'], tag=tag, timeout=900)
             if image:
@@ -24,14 +24,18 @@ class DockerLib:
                     if 'stream' in chunk:
                         for line in chunk['stream'].splitlines():
                             self.log.debug(line)
+            self.log.info("Container built successfully!")
         except docker.errors.BuildError as e:
-            problems.append(e)
-        finally:
-            if len(problems) > 0:
-                self.log.error("Errors while building the container:")
-                [self.log.error(problem) for problem in problems]
-            else:
-                self.log.info("Container built successfully!")
-
-    def prune(self):
-        return self.client.images.prune_builds()
+            self.log.error("Errors while building the container:")
+            self.log.error(e)
+    
+    def push(self, tag, repo):
+        self.self.log.info("Pushing {tag} to {repo}...")
+        try:
+            resp = self.client.images.push(repo, tag, stream=True, decode=True)
+            for line in resp:
+                self.log.debug(line)
+            self.log.info("Container pushed successfully!")
+        except docker.errors.APIError as e:
+            self.log.error("Errors while pushing the container:")
+            self.log.error(e)
