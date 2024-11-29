@@ -1,8 +1,10 @@
-import kubernetes
+import library.kubernetes as kubernetes
+from library.logs import LogsLib
 
 
-class K8sLib:
-    def __init__(self, f_config) -> None:
+class K8sLib(LogsLib):
+    def __init__(self, f_config, loglevel) -> None:
+        super().__init__(loglevel)
         """
         Creates a Kubernetes Library instance
 

@@ -1,15 +1,13 @@
 import subprocess
 import logging
+from library.logs import LogsLib
 from rich.logging import RichHandler
 
 FORMAT = "%(message)s"
 
-class OpentofuLib:
+class OpentofuLib(LogsLib):
     def __init__(self, loglevel) -> None:
-        logging.basicConfig(
-            level=loglevel, format=FORMAT, datefmt="[%X]", handlers=[RichHandler()]
-        )
-        self.log = logging.getLogger("rich")
+        super().__init__(loglevel)
 
     def opentofu_plan(self):
         self.log.info("Planning infrastructure...")

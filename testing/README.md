@@ -1,3 +1,0 @@
-# Testing stuff
-
-SonarQube, Docker analysis...
