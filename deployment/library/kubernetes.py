@@ -1,4 +1,4 @@
-import library.kubernetes as kubernetes
+import kubernetes
 from library.logs import LogsLib
 
 

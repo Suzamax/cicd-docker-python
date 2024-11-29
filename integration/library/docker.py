@@ -3,11 +3,10 @@ import docker
 import logging
 import docker.errors
 from rich.logging import RichHandler
+from common.logs import LogsLib
 
-FORMAT = "%(message)s"
 
-
-class DockerLib:
+class DockerLib(LogsLib):
     def __init__(self, loglevel) -> None:
         self.client = docker.client.from_env()
         logging.basicConfig(

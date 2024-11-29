@@ -1,9 +1,5 @@
 import subprocess
-import logging
-from library.logs import LogsLib
-from rich.logging import RichHandler
-
-FORMAT = "%(message)s"
+from common.logs import LogsLib
 
 class OpentofuLib(LogsLib):
     def __init__(self, loglevel) -> None:
