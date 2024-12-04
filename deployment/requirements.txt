@@ -1,4 +1,4 @@
-docker
+kubernetes
 rich
 click
 ruamel.yaml

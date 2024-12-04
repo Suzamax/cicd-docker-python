@@ -9,15 +9,15 @@ from common.logs import LogsLib
 class DockerLib(LogsLib):
     def __init__(self, loglevel) -> None:
         self.client = docker.client.from_env()
-        logging.basicConfig(
-            level=loglevel, format=FORMAT, datefmt="[%X]", handlers=[RichHandler()]
-        )
-        self.log = logging.getLogger("rich")
+        super().__init__(loglevel)
 
-    def build(self, tag):
-        self.self.log.info("Building {tag} container...")
+    def build(self, tag, dockerfile):
+        self.log.info("Building %s container..." % tag)
         try:
-            image, logs = self.client.images.build(path=os.environ['DOCKERFILE_PATH'], tag=tag, timeout=900)
+            image, logs = self.client.images.build(
+                path=os.environ['BUILD_PATH'],
+                tag=tag, timeout=900,
+                dockerfile=dockerfile)
             if image:
                 for chunk in logs:
                     if 'stream' in chunk:
@@ -29,7 +29,7 @@ class DockerLib(LogsLib):
             self.log.error(e)
     
     def push(self, tag, repo):
-        self.self.log.info("Pushing {tag} to {repo}...")
+        self.self.log.info("Pushing %s to %s..." % tag, repo)
         try:
             resp = self.client.images.push(repo, tag, stream=True, decode=True)
             for line in resp:
